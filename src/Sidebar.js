@@ -6,8 +6,9 @@ import {
   ListItemIcon,
   ListItemText,
   ListSubheader,
+  Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 
 import AvTimerIcon from "@mui/icons-material/AvTimer";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
@@ -15,10 +16,12 @@ import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import AppRegistrationOutlinedIcon from "@mui/icons-material/AppRegistrationOutlined";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import FamilyRestroomIcon from "@mui/icons-material/FamilyRestroom";
+import { Link } from "react-router-dom";
 
 export default function Sidebar() {
   const [open, setOpen] = React.useState(false);
   const [appOpen, setAppOpen] = React.useState(false);
+  const [appinsideCalls, setAppinsedeCaslls] = useState(false);
   const [empOpen, setEmpOpen] = React.useState(false);
   const [projectOpen, setProjectOpen] = React.useState(false);
   const [salesOpen, setSalesOpen] = React.useState(false);
@@ -53,17 +56,17 @@ export default function Sidebar() {
 
   return (
     <Box
-      bgcolor="green"
-      flex={2}
+    //   bgcolor="green"
+      flex={3}
       //   p={2}
       //   sx={{ display: { xs: "none", sm: "block" } }}
     >
       <List
-        sx={{ width: "100%", maxWidth: 360, bgcolor: "#e4e4e4" }}
+        sx={{ width: "100%", maxWidth: 360, bgcolor: "gray" }}
         component="nav"
         aria-labelledby="nested-list-subheader"
         subheader={
-          <ListSubheader component="div" id="nested-list-subheader">
+          <ListSubheader sx={{ bgcolor: "gray" }} component="div" id="nested-list-subheader">
             Main
           </ListSubheader>
         }
@@ -77,10 +80,10 @@ export default function Sidebar() {
         </ListItemButton>
         <Collapse in={open} timeout="auto" unmountOnExit>
           <ListItemButton sx={{ pl: 10 }}>
-            <ListItemText primary="Admin Dashboard" />
+          <Link to="/"><ListItemText primary="Admin Dashboard"/></Link>
           </ListItemButton>
           <ListItemButton sx={{ pl: 10 }}>
-            <ListItemText primary="Starred" />
+            <Link to="/EmployeeDashboard"><ListItemText primary="Empoloyees Dashboard" /></Link>
           </ListItemButton>
         </Collapse>
         <ListItemButton onClick={Apps}>
@@ -92,11 +95,42 @@ export default function Sidebar() {
         </ListItemButton>
         <Collapse in={appOpen} timeout="auto" unmountOnExit>
           <ListItemButton sx={{ pl: 10 }}>
-            <ListItemText primary="Admin Dashboard" />
+            <ListItemText primary="Chat" />
+          </ListItemButton>
+
+          <ListItemButton onClick={() => setAppinsedeCaslls(!appinsideCalls)}>
+            <ListItemIcon>{/* <AppRegistrationOutlinedIcon /> */}</ListItemIcon>
+            <ListItemText sx={{ pl: 1}} primary="Calls" />
+            {appinsideCalls ? <ArrowDropDownIcon /> : <ArrowRightIcon />}
+          </ListItemButton>
+          <Collapse in={appinsideCalls} timeout="auto" unmountOnExit>
+            <ListItemButton sx={{ pl: 11 }}>
+              <ListItemText primary="Voice Call" />
+            </ListItemButton>
+            <ListItemButton sx={{ pl: 11 }}>
+              <ListItemText primary="Video Call" />
+            </ListItemButton>
+            <ListItemButton sx={{ pl: 11 }}>
+              <ListItemText primary="Outgoing Call" />
+            </ListItemButton>
+            <ListItemButton sx={{ pl: 11 }}>
+              <ListItemText primary="Incoming Call" />
+            </ListItemButton>
+          </Collapse>
+
+          <ListItemButton sx={{ pl: 10 }}>
+            <ListItemText primary="Calender" />
           </ListItemButton>
           <ListItemButton sx={{ pl: 10 }}>
-            <ListItemText primary="Starred" />
+            <ListItemText primary="Contacts" />
           </ListItemButton>
+          <ListItemButton sx={{ pl: 10 }}>
+            <ListItemText primary="Email" />
+          </ListItemButton>
+          <ListItemButton sx={{ pl: 10 }}>
+            <ListItemText primary="File Manager" />
+          </ListItemButton>
+
         </Collapse>
         <ListItemButton onClick={Employees}>
           <ListItemIcon>
@@ -148,7 +182,6 @@ export default function Sidebar() {
           </ListItemIcon>
           <ListItemText primary="Tickets" />
         </ListItemButton>
-
       </List>
       <List
         sx={{ width: "100%", maxWidth: 360, bgcolor: "#e4e4e4" }}
@@ -172,7 +205,7 @@ export default function Sidebar() {
             <ListItemText primary="Admin Dashboard" />
           </ListItemButton>
           <ListItemButton sx={{ pl: 10 }}>
-            <ListItemText primary="Starred" />
+            <ListItemText primary="stard" />
           </ListItemButton>
         </Collapse>
         <ListItemButton onClick={Accounting}>
@@ -228,7 +261,6 @@ export default function Sidebar() {
             <ListItemText primary="Starred" />
           </ListItemButton>
         </Collapse>
-
       </List>
     </Box>
   );

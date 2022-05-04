@@ -1,11 +1,11 @@
-import { Box, Typography } from "@mui/material";
-import React from "react";
+import { Box } from '@mui/system'
+import React from 'react'
+import AdminDashboard from './components/Dashboard/AdminDashboard'
 
 export default function Main() {
   return (
-    <Box flex={10} sx={{bgcolor: "background.paper"}} p={2}>
-      <Typography variant="h3">Welcome Admin!</Typography>
-      <Typography variant="span">Dashboard</Typography>
-    </Box>
-  );
+   
+      <AdminDashboard/>
+    
+  )
 }

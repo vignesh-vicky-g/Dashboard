@@ -7,7 +7,9 @@ import {
   Badge,
   Collapse,
   Divider,
+  FormControl,
   InputBase,
+  InputLabel,
   List,
   ListItem,
   ListItemAvatar,
@@ -56,10 +58,14 @@ const MenuBox = styled(Box)(({ theme }) => ({
 }));
 
 export default function Navbar() {
+  const [age, setAge] = React.useState(Canada);
   const [open, setOpen] = useState(false);
   const [popupMsg, setPopupMsg] = useState(false);
   const [notification, setNotification] = useState(false);
 
+  const handleChange = (event) => {
+    setAge(event.target.value);
+  };
   return (
     <AppBar position="sticky">
       <StyledToolBar>
@@ -68,21 +74,22 @@ export default function Navbar() {
         <Search>
           <InputBase placeholder="Search here" />
         </Search>
-        <Select label="Lang">
-          <MenuItem>
-            <img src={Canada} style={{ width: "40px" }} />
+        <Select label="Lang" sx={{border: "0px",outline: 0, borderColor: "#ffffff", boxShadow: "none"}} 
+        value={age} onChange={handleChange}>
+          <MenuItem value={Canada}>
+          <img src={Canada} style={{ width: "25px" }} /><Typography variant="span" ml={3}>French</Typography>
           </MenuItem>
-          <MenuItem>
+          <MenuItem value={England}>
             {" "}
-            <img src={England} style={{ width: "40px" }} />
+            <img src={England} style={{ width: "25px" }} /><Typography variant="span" ml={3}>English</Typography>
           </MenuItem>
-          <MenuItem>
+          <MenuItem value={Australia}>
             {" "}
-            <img src={Australia} style={{ width: "40px" }} />
+            <img src={Australia} style={{ width: "25px" }} /><Typography variant="span" ml={3}>English</Typography>
           </MenuItem>
-          <MenuItem>
+          <MenuItem value={Japan}>
             {" "}
-            <img src={Japan} style={{ width: "40px" }} />
+            <img src={Japan} style={{ width: "25px" }} /><Typography variant="span" ml={3}>Japanese</Typography>
           </MenuItem>
         </Select>
         <Icons>
@@ -332,99 +339,6 @@ export default function Navbar() {
               </List>
             </MenuItem>
           </Menu>
-
-          {/* ----------------------------------------------------------- */}
-          {/* <Badge
-            badgeContent={3}
-            color="error"
-            onClick={true}
-            anchorOrigin={{
-              vertical: "top",
-              horizontal: "right",
-            }}
-            transformOrigin={{
-              vertical: "top",
-              horizontal: "right",
-            }}
-          >
-            <NotificationsNoneIcon />
-          </Badge>
-          <Collapse in={true} timeout="auto" unmountOnExit>
-            <List
-              sx={{
-                width: "100%",
-                maxWidth: 360,
-                bgcolor: "background.paper",
-              }}
-            >
-              <ListItem alignItems="flex-start">
-                <ListItemAvatar>
-                  <Avatar alt="Remy Sharp" src={Notification} />
-                </ListItemAvatar>
-                <ListItemText
-                  primary="Brunch this weekend?"
-                  secondary={
-                    <React.Fragment>
-                      <Typography
-                        sx={{ display: "inline" }}
-                        component="span"
-                        variant="body2"
-                        color="text.primary"
-                      >
-                        Ali Connors
-                      </Typography>
-                      {" — I'll be in your neighborhood doing errands this…"}
-                    </React.Fragment>
-                  }
-                />
-              </ListItem>
-              <Divider variant="inset" component="li" />
-              <ListItem alignItems="flex-start">
-                <ListItemAvatar>
-                  <Avatar alt="Travis Howard" src={Notification} />
-                </ListItemAvatar>
-                <ListItemText
-                  primary="Summer BBQ"
-                  secondary={
-                    <React.Fragment>
-                      <Typography
-                        sx={{ display: "inline" }}
-                        component="span"
-                        variant="body2"
-                        color="text.primary"
-                      >
-                        to Scott, Alex, Jennifer
-                      </Typography>
-                      {" — Wish I could come, but I'm out of town this…"}
-                    </React.Fragment>
-                  }
-                />
-              </ListItem>
-              <Divider variant="inset" component="li" />
-              <ListItem alignItems="flex-start">
-                <ListItemAvatar>
-                  <Avatar alt="Cindy Baker" src={Notification} />
-                </ListItemAvatar>
-                <ListItemText
-                  primary="Oui Oui"
-                  secondary={
-                    <React.Fragment>
-                      <Typography
-                        sx={{ display: "inline" }}
-                        component="span"
-                        variant="body2"
-                        color="text.primary"
-                      >
-                        Sandra Adams
-                      </Typography>
-                      {" — Do you have Paris recommendations? Have you ever…"}
-                    </React.Fragment>
-                  }
-                />
-              </ListItem>
-            </List>
-          </Collapse> */}
-
           <Avatar sx={{ width: 30, height: 30 }} alt="R" src={Profile} />
           <Typography variant="span" onClick={(e) => setOpen(true)}>
             Admin
@@ -452,6 +366,7 @@ export default function Navbar() {
         <MenuItem>My account</MenuItem>
         <MenuItem>Logout</MenuItem>
       </Menu>
+
     </AppBar>
   );
 }
