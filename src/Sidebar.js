@@ -57,41 +57,42 @@ export default function Sidebar() {
   return (
     <Box
     //   bgcolor="green"
-      flex={3}
+      flex={2}
       //   p={2}
       //   sx={{ display: { xs: "none", sm: "block" } }}
+      color="white"
     >
       <List
-        sx={{ width: "100%", maxWidth: 360, bgcolor: "gray" }}
+        sx={{ width: "100%", maxWidth: 360, bgcolor: "#434946", color: "white" }}
         component="nav"
         aria-labelledby="nested-list-subheader"
         subheader={
-          <ListSubheader sx={{ bgcolor: "gray" }} component="div" id="nested-list-subheader">
+          <ListSubheader sx={{ bgcolor: "#434946", color:"white" }} component="div" id="nested-list-subheader">
             Main
           </ListSubheader>
         }
       >
         <ListItemButton onClick={Dashboard}>
-          <ListItemIcon>
-            <AvTimerIcon />
+          <ListItemIcon >
+            <AvTimerIcon style={{color:"white"}}/>
           </ListItemIcon>
           <ListItemText primary="Dashboard" />
-          {open ? <ArrowDropDownIcon /> : <ArrowRightIcon />}
+          {open ? <ArrowDropDownIcon style={{color:"white"}}/> : <ArrowRightIcon style={{color:"white"}}/>}
         </ListItemButton>
         <Collapse in={open} timeout="auto" unmountOnExit>
           <ListItemButton sx={{ pl: 10 }}>
           <Link to="/"><ListItemText primary="Admin Dashboard"/></Link>
           </ListItemButton>
           <ListItemButton sx={{ pl: 10 }}>
-            <Link to="/EmployeeDashboard"><ListItemText primary="Empoloyees Dashboard" /></Link>
+            <Link to="/EmployeesDashboard"><ListItemText primary="Empoloyees Dashboard" /></Link>
           </ListItemButton>
         </Collapse>
         <ListItemButton onClick={Apps}>
           <ListItemIcon>
-            <AppRegistrationOutlinedIcon />
+            <AppRegistrationOutlinedIcon style={{color:"white"}}/>
           </ListItemIcon>
           <ListItemText primary="Apps" />
-          {open ? <ArrowDropDownIcon /> : <ArrowRightIcon />}
+          {appOpen ? <ArrowDropDownIcon /> : <ArrowRightIcon />}
         </ListItemButton>
         <Collapse in={appOpen} timeout="auto" unmountOnExit>
           <ListItemButton sx={{ pl: 10 }}>
@@ -134,11 +135,11 @@ export default function Sidebar() {
         </Collapse>
         <ListItemButton onClick={Employees}>
           <ListItemIcon>
-            <AccountCircleIcon />
+            <AccountCircleIcon style={{color:"white"}}/>
           </ListItemIcon>
           <ListItemText primary="Employees" />
-          {open ? <ArrowDropDownIcon /> : <ArrowRightIcon />}
-        </ListItemButton>
+          {empOpen ? <ArrowDropDownIcon /> : <ArrowRightIcon />}
+        </ListItemButton >
         <Collapse in={empOpen} timeout="auto" unmountOnExit>
           <ListItemButton sx={{ pl: 10 }}>
             <ListItemText primary="Admin Dashboard" />
@@ -150,17 +151,17 @@ export default function Sidebar() {
 
         <ListItemButton>
           <ListItemIcon>
-            <FamilyRestroomIcon />
+            <FamilyRestroomIcon style={{color:"white"}}/>
           </ListItemIcon>
           <ListItemText primary="Clients" />
         </ListItemButton>
 
         <ListItemButton onClick={Projects}>
           <ListItemIcon>
-            <AccountCircleIcon />
+            <AccountCircleIcon style={{color:"white"}}/>
           </ListItemIcon>
           <ListItemText primary="Projects" />
-          {open ? <ArrowDropDownIcon /> : <ArrowRightIcon />}
+          {projectOpen ? <ArrowDropDownIcon /> : <ArrowRightIcon />}
         </ListItemButton>
         <Collapse in={projectOpen} timeout="auto" unmountOnExit>
           <ListItemButton sx={{ pl: 10 }}>
@@ -172,35 +173,29 @@ export default function Sidebar() {
         </Collapse>
         <ListItemButton>
           <ListItemIcon>
-            <FamilyRestroomIcon />
+            <FamilyRestroomIcon style={{color:"white"}}/>
           </ListItemIcon>
           <ListItemText primary="Leads" />
         </ListItemButton>
         <ListItemButton>
           <ListItemIcon>
-            <FamilyRestroomIcon />
+            <FamilyRestroomIcon style={{color:"white"}}/>
           </ListItemIcon>
           <ListItemText primary="Tickets" />
         </ListItemButton>
-      </List>
-      <List
-        sx={{ width: "100%", maxWidth: 360, bgcolor: "#e4e4e4" }}
-        component="nav"
-        aria-labelledby="nested-list-subheader"
-        subheader={
-          <ListSubheader component="div" id="nested-list-subheader">
+
+          <ListSubheader sx={{ bgcolor: "#434946", color:"white" }} component="div" id="nested-list-subheader">
             HR
           </ListSubheader>
-        }
-      >
+        
         <ListItemButton onClick={Sales}>
           <ListItemIcon>
-            <AvTimerIcon />
+            <AvTimerIcon style={{color:"white"}}/>
           </ListItemIcon>
           <ListItemText primary="Sales" />
-          {open ? <ArrowDropDownIcon /> : <ArrowRightIcon />}
+          {salesOpen ? <ArrowDropDownIcon /> : <ArrowRightIcon />}
         </ListItemButton>
-        <Collapse in={open} timeout="auto" unmountOnExit>
+        <Collapse in={salesOpen} timeout="auto" unmountOnExit>
           <ListItemButton sx={{ pl: 10 }}>
             <ListItemText primary="Admin Dashboard" />
           </ListItemButton>
@@ -210,10 +205,10 @@ export default function Sidebar() {
         </Collapse>
         <ListItemButton onClick={Accounting}>
           <ListItemIcon>
-            <AppRegistrationOutlinedIcon />
+            <AppRegistrationOutlinedIcon style={{color:"white"}}/>
           </ListItemIcon>
           <ListItemText primary="Accounting" />
-          {open ? <ArrowDropDownIcon /> : <ArrowRightIcon />}
+          {accOpen ? <ArrowDropDownIcon /> : <ArrowRightIcon />}
         </ListItemButton>
         <Collapse in={accOpen} timeout="auto" unmountOnExit>
           <ListItemButton sx={{ pl: 10 }}>
@@ -225,7 +220,7 @@ export default function Sidebar() {
         </Collapse>
         <ListItemButton onClick={Payroll}>
           <ListItemIcon>
-            <AccountCircleIcon />
+            <AccountCircleIcon style={{color:"white"}}/>
           </ListItemIcon>
           <ListItemText primary="Payroll" />
           {payrollOpen ? <ArrowDropDownIcon /> : <ArrowRightIcon />}
@@ -241,17 +236,17 @@ export default function Sidebar() {
 
         <ListItemButton>
           <ListItemIcon>
-            <FamilyRestroomIcon />
+            <FamilyRestroomIcon style={{color:"white"}}/>
           </ListItemIcon>
           <ListItemText primary="Policies" />
         </ListItemButton>
 
         <ListItemButton onClick={Reports}>
           <ListItemIcon>
-            <AccountCircleIcon />
+            <AccountCircleIcon style={{color:"white"}}/>
           </ListItemIcon>
           <ListItemText primary="Reports" />
-          {open ? <ArrowDropDownIcon /> : <ArrowRightIcon />}
+          {reports ? <ArrowDropDownIcon /> : <ArrowRightIcon />}
         </ListItemButton>
         <Collapse in={reports} timeout="auto" unmountOnExit>
           <ListItemButton sx={{ pl: 10 }}>
@@ -261,7 +256,7 @@ export default function Sidebar() {
             <ListItemText primary="Starred" />
           </ListItemButton>
         </Collapse>
-      </List>
+        </List>
     </Box>
   );
 }
