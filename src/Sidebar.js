@@ -5,8 +5,7 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
-  ListSubheader,
-  Typography,
+  ListSubheader
 } from "@mui/material";
 import React, { useState } from "react";
 
@@ -63,7 +62,7 @@ export default function Sidebar() {
       color="white"
     >
       <List
-        sx={{ width: "100%", maxWidth: 360, bgcolor: "#434946", color: "white" }}
+        sx={{ maxWidth: 360, bgcolor: "#434946", color: "white" }}
         component="nav"
         aria-labelledby="nested-list-subheader"
         subheader={
@@ -165,7 +164,7 @@ export default function Sidebar() {
         </ListItemButton>
         <Collapse in={projectOpen} timeout="auto" unmountOnExit>
           <ListItemButton sx={{ pl: 10 }}>
-            <ListItemText primary="Admin Dashboard" />
+            <Link to="/Project"><ListItemText primary="Project" /></Link>
           </ListItemButton>
           <ListItemButton sx={{ pl: 10 }}>
             <ListItemText primary="Starred" />

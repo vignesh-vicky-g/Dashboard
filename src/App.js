@@ -5,6 +5,7 @@ import Sidebar from "./Sidebar";
 import EmployeesDashboard from "./components/Dashboard/EmployeesDashboard";
 // import AdminDashboard from "./components/Dashboard/AdminDashboard";
 import Hello from "./components/Hello.js";
+import Project from "./components/Project/Project.js";
 
 
 
@@ -17,9 +18,7 @@ function App() {
       <Box>
         <Navbar /> 
         
-        <Stack direction="row" spacing={0} justifyContent="space-between">
-          {/* <Main /> */}
-          {/* <EmployeesDashboard/> */}
+        <Stack direction="row" spacing={0} >
           <Sidebar />
           <Routes>
             <Route path="/" element={<Main/>} />
@@ -27,6 +26,7 @@ function App() {
               path="/EmployeesDashboard"
               element={<EmployeesDashboard/>}
             />
+            <Route path="/Project" element={<Project />}></Route>
           </Routes>
         </Stack>
       </Box>
